@@ -2,7 +2,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 
 function generateLogo(colour, shape, text) {
-  const svg = new SVGBuilder({
+  const svg = new SVGLogo({
     viewBox: '0 0 200 100',
   });
 
@@ -10,8 +10,8 @@ function generateLogo(colour, shape, text) {
     case 'circle':
       svg.circle(50, 50, 40, { fill: colour });
       break;
-    case 'rectangle':
-      svg.rect(20, 20, 160, 60, { fill: colour });
+    case 'triangle':
+      svg.rect(20, 20, 50, { fill: colour });
       break;
     case 'square':
       svg.rect(20, 20, 20, 20, { fill: colour });
@@ -23,7 +23,7 @@ function generateLogo(colour, shape, text) {
 
   svg.text(100, 55, text, {
     fill: 'white',
-    'font-family': 'Arial',
+    'font-family': 'Times',
     'font-size': '20',
     'text-anchor': 'middle',
     'dominant-baseline': 'middle',
@@ -44,7 +44,7 @@ function generateLogo(colour, shape, text) {
         type: 'list',
         name: 'shape',
         message: 'Select a shape:',
-        choices: ['circle', 'rectangle', 'square'],
+        choices: ['circle', 'triangle', 'square'],
       },
       {
         type: 'input',
